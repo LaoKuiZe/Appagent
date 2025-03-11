@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will initiate navigation by providing the user with directions to the specified location. This action allows the user to view the best route and estimated travel time.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

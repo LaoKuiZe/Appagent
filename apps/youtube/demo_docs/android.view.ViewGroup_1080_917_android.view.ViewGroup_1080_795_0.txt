@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will navigate the user to an advertisement page.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

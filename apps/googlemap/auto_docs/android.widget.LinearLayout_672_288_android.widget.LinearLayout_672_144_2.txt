@@ -1,0 +1,1 @@
+{'tap': 'The UI element provided a means to select a specific hospital, leading to a detailed view of the location and related information.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

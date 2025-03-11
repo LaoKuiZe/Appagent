@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will open a detailed view or media presentation about the selected basketball, allowing the user to view additional information and features.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element will close the current advertisement and proceed to the next screen.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will display the details and options for a specific basketball product, allowing the user to view descriptions, prices, and purchasing options. This step is essential for identifying the bestselling basketball.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'The UI element functions as a search button, initiating the query entered in the search bar and leading to a results page.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping the UI element up reveals additional purchase options and delivery information related to the product.', 'h_swipe': '', 'long_press': ''}

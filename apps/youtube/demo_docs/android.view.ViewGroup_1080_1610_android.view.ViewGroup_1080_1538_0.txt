@@ -1,0 +1,1 @@
+{'tap': 'Tapping this area will play the video.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

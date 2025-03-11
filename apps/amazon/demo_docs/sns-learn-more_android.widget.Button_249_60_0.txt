@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping the UI element up allows the user to adjust the quantity of the product.', 'h_swipe': '', 'long_press': ''}

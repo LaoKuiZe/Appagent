@@ -1,0 +1,1 @@
+{'tap': 'The UI element serves as a search interface, allowing users to enter queries or commands to find locations, such as hospitals, on the map.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,10 @@
+tap(19):::android.widget.LinearLayout_1080_144_androidx.appcompat.app.ActionBar$Tab_212_144_0
+tap(2):::android.widget.RelativeLayout_1080_180_com.amazon.mShop.android.shopping.id_chrome_search_box_Search_1
+text(1:sep:"coffee"):::com.amazon.mShop.android.shopping.id_webview_search_entry_com.amazon.mShop.android.shopping.id_rs_search_entry_bar_SearchAmazon_0
+tap(11):::sac-suggestion-row-4-cell-1_android.widget.Button_786_111_0
+swipe(18:sep:up):::android.view.View_1026_123_android.view.View_351_57_AHealthierCoffee_1
+tap(25):::android.view.View_1032_510_android.view.View_441_507_Amazon'sChoice_0
+swipe(9:sep:up):::image-block-product-image-0_android.view.View_708_870_0
+tap(22):::rcx-subscribe-submit-button_rcx-subscribe-submit-button-announce_0
+tap(27):::android.widget.LinearLayout_1080_144_androidx.appcompat.app.ActionBar$Tab_212_144_0
+stop

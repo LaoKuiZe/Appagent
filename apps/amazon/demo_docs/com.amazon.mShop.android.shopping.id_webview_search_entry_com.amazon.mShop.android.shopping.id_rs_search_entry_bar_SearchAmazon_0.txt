@@ -1,0 +1,1 @@
+{'tap': '', 'text': 'The UI element is designed for users to input their search query, facilitating the discovery of products or information related to basketball. By typing in this area, users can initiate a search to find bestselling basketballs or related items.', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

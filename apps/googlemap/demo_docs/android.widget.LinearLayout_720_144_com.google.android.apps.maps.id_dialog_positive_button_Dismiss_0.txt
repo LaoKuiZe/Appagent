@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element dismisses the pop-up message, allowing the user to return to the main navigation interface. This action is necessary to proceed with the navigation to Hefei Nan Station.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

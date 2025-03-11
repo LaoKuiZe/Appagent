@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this area allows the user to explore different options or features related to the product.', 'h_swipe': '', 'long_press': ''}

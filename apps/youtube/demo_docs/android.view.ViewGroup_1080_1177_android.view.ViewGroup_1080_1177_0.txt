@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this UI element reveals additional options or information related to the content currently displayed on the screen.', 'h_swipe': '', 'long_press': ''}

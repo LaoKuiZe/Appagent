@@ -1,0 +1,1 @@
+{'tap': 'The UI element allows users to initiate route guidance to a specified destination, facilitating better travel planning to reach the selected hospital.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

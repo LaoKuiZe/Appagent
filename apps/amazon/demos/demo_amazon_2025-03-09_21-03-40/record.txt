@@ -1,0 +1,5 @@
+swipe(16:sep:up):::android.view.View_1080_1158_android.view.View_1026_540_1
+tap(31):::a-autoid-0_a-autoid-0-announce_0
+tap(46):::android.widget.LinearLayout_1080_144_androidx.appcompat.app.ActionBar$Tab_218_144_2
+swipe(9:sep:up):::sc-buy-box-ptc-button_android.widget.Button_990_129_0
+stop

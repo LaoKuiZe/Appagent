@@ -1,0 +1,1 @@
+{'tap': "The UI element is a selection that allows the user to proceed to a detailed page regarding the hospital, showing its address and potentially offering navigation options and more in-depth information about the hospital's services.", 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

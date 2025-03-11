@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element initiates a search for bestseller books from a specific year.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

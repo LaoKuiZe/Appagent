@@ -1,0 +1,10 @@
+tap(3):::android.view.ViewGroup_144_144_com.google.android.youtube.id_menu_item_view_Search_0
+text(2:sep:"How does the latest Iphone perform?"):::com.google.android.youtube.id_search_box_com.google.android.youtube.id_search_edit_text_0
+tap(3):::com.google.android.youtube.id_search_box_com.google.android.youtube.id_search_clear_Clear_1
+text(2:sep:"How does the latest Iphone perform"):::com.google.android.youtube.id_search_box_com.google.android.youtube.id_search_edit_text_0
+tap(4):::com.google.android.youtube.id_results_recycler_view_com.google.android.youtube.id_linearLayout_0
+swipe(10:sep:up):::android.view.ViewGroup_1008_96_android.view.ViewGroup_1008_96_0
+swipe(16:sep:up):::android.view.ViewGroup_1080_249_android.view.ViewGroup_98_48_5
+tap(16):::android.view.ViewGroup_1080_951_android.view.ViewGroup_1080_795_0
+tap(8):::android.view.ViewGroup_1080_144_android.widget.Button_60_60_Closeadpanel_3
+tap(3):::com.google.android.youtube.id_size_adjustable_inner_wrapper_com.google.android.youtube.id_skip_ad_button_1

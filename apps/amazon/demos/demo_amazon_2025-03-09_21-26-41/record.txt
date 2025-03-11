@@ -1,0 +1,12 @@
+tap(5):::android.widget.RelativeLayout_1080_180_com.amazon.mShop.android.shopping.id_chrome_search_box_Search_0
+text(1:sep:"bestselling coffee"):::com.amazon.mShop.android.shopping.id_webview_search_entry_com.amazon.mShop.android.shopping.id_rs_search_entry_bar_SearchAmazon_0
+tap(5):::sac-suggestion-row-1-cell-1_android.widget.Button_786_108_0
+swipe(13:sep:up):::android.view.View_1056_594_android.view.View_1056_594_0
+tap(15):::android.view.View_1050_480_android.view.View_408_456_0
+swipe(13:sep:up):::fezLauncherLink_android.view.View_354_90_VIEWIN3D_0
+swipe(14:sep:up):::fezLauncherLink_android.view.View_354_90_VIEWIN3D_0
+swipe(14:sep:up):::fezLauncherLink_android.view.View_354_90_VIEWIN3D_0
+swipe(18:sep:up):::selectQuantity_rcxsubsQuan_1
+swipe(18:sep:up):::sns-learn-more_android.widget.Button_249_60_0
+tap(20):::rcx-subscribe-submit-button_rcx-subscribe-submit-button-announce_0
+stop

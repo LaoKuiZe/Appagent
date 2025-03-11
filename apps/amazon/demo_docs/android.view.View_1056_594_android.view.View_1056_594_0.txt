@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this area changes the displayed content to reveal more product options or details available within the app.', 'h_swipe': '', 'long_press': ''}

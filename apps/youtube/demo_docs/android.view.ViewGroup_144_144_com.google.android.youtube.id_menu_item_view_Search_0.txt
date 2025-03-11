@@ -1,0 +1,1 @@
+{'tap': 'Tapping this area will allow the user to perform a search within the app.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this UI element up allows the user to access additional information regarding the style or model of the product. This facilitates navigation to related product options or details necessary for making a purchase decision.', 'h_swipe': '', 'long_press': ''}

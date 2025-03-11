@@ -1,0 +1,1 @@
+{'tap': 'The UI element functions as a search input field, allowing users to enter text for searches related to locations or services.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element will take the user to the home page of the app.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

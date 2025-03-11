@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will select the specified size for the basketball, allowing the user to proceed with their purchase. This selection is essential for ensuring the correct product specifications are set before moving on to the next steps. Or this product cannot be added to the cart.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will add the selected item to the shopping cart for further purchase processing.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

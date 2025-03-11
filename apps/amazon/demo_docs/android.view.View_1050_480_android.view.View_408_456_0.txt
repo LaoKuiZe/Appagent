@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element will navigate the user to the product details page for more information about the item.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

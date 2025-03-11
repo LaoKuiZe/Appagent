@@ -1,0 +1,1 @@
+{'tap': 'The UI element opens the search bar, clearing any previous search and allowing the user to input a new destination.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

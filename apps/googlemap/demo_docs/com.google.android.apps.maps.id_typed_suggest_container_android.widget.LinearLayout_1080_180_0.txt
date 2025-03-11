@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element displays detailed information and the location of a specific place of interest on the map. This allows users to view navigation options or additional details about the selected location.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

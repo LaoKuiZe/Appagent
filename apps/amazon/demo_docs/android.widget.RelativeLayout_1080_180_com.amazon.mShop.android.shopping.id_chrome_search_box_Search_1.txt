@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element opens the search bar, allowing the user to enter a query or choose a recent search for browsing products.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

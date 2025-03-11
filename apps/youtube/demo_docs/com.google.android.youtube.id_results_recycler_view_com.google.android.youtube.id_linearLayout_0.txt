@@ -1,0 +1,1 @@
+{'tap': "Tapping this area will initiate a search for relevant content related to the user's query. This action facilitates the discovery of information pertinent to the task at hand.", 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this area allows the user to view more details about a selected item.', 'h_swipe': '', 'long_press': ''}

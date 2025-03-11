@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will open the detailed description page for the selected book.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

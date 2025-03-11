@@ -1,0 +1,1 @@
+{'tap': '', 'text': 'This input area is used for the user to type a search query related to cloning a GitHub project to their computer.', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

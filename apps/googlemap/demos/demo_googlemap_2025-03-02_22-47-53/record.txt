@@ -1,0 +1,10 @@
+tap(10):::com.google.android.apps.maps.id_mod_search_omnibox_layout_com.google.android.apps.maps.id_search_omnibox_text_box_1
+text(10:sep:"HeFeiNan Station"):::com.google.android.apps.maps.id_mod_search_omnibox_layout_com.google.android.apps.maps.id_search_omnibox_text_box_1
+tap(1):::com.google.android.apps.maps.id_typed_suggest_container_android.widget.LinearLayout_1080_180_0
+tap(3):::android.widget.LinearLayout_367_144_android.widget.Button_367_144_0
+tap(13):::android.widget.FrameLayout_262_144_android.widget.Button_262_144_Start_0
+tap(2):::android.widget.LinearLayout_936_168_android.id_button1_0
+tap(1):::android.widget.LinearLayout_720_288_com.google.android.apps.maps.id_dialog_secondary_button_Allow_0
+tap(1):::com.android.permissioncontroller.id_buttons_com.android.permissioncontroller.id_permission_allow_button_Allow_0
+tap(2):::android.widget.LinearLayout_720_144_com.google.android.apps.maps.id_dialog_positive_button_Dismiss_0
+stop

@@ -1,0 +1,1 @@
+{'tap': 'Tapping this area initiates navigation to the selected destination, providing real-time directions and guidance for the journey.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

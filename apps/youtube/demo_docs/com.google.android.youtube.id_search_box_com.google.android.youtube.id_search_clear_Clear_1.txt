@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element will clear the current search query.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

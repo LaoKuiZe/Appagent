@@ -1,0 +1,1 @@
+tap(17):::com.google.android.youtube.id_watch_player_Videoplayer_android.view.View_1_1_3

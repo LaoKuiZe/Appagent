@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this UI element allows the user to navigate through different sorting options for product listings, helping them quickly access the most purchased items. This action facilitates the selection of the bestselling basketball.', 'h_swipe': '', 'long_press': ''}

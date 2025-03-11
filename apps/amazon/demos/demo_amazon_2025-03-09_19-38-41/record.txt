@@ -1,0 +1,14 @@
+tap(5):::android.widget.RelativeLayout_1080_180_com.amazon.mShop.android.shopping.id_chrome_search_box_Search_0
+text(1:sep:"bestseller book last year"):::com.amazon.mShop.android.shopping.id_webview_search_entry_com.amazon.mShop.android.shopping.id_rs_search_entry_bar_SearchAmazon_0
+tap(4):::com.amazon.mShop.android.shopping.id_search_edit_frame_com.amazon.mShop.android.shopping.id_rs_clear_text_button_accessibility_1
+text(1:sep:"bestselled book"):::com.amazon.mShop.android.shopping.id_webview_search_entry_com.amazon.mShop.android.shopping.id_rs_search_entry_bar_SearchAmazon_0
+tap(11):::sac-suggestion-row-4-cell-1_android.widget.Button_786_111_0
+tap(14):::android.view.View_1032_891_android.view.View_441_885_BestSeller_0
+swipe(19:sep:up):::image-block-product-image-0_android.view.View_807_951_0
+swipe(19:sep:up):::image-block-product-image-0_android.view.View_807_1212_0
+swipe(16:sep:up):::image-block-product-image-0_android.view.View_807_1212_0
+swipe(20:sep:up):::a-autoid-0_a-autoid-0-announce_0
+swipe(23:sep:up):::a-autoid-3_a-autoid-3-announce_0
+swipe(23:sep:up):::android.view.View_996_69_android.view.View_42_63_1
+tap(25):::a-autoid-5_add-to-cart-button_0
+stop

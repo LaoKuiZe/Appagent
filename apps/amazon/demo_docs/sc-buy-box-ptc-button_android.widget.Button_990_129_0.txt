@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this area up allows the user to proceed to the checkout process with the selected items.', 'h_swipe': '', 'long_press': ''}

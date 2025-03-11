@@ -1,0 +1,1 @@
+{'tap': 'Tapping this area will return the user to the previous screen.', 'text': '', 'v_swipe': 'Swiping this area reveals additional options or actions related to the current content.', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will display the comments section of the post.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

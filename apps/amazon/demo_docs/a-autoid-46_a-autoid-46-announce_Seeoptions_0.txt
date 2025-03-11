@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will display alternative options for the selected basketball item, helping the user explore different products that may meet their preferences. This assists in making a more informed purchasing decision. Or this item cannot be added to the cart.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

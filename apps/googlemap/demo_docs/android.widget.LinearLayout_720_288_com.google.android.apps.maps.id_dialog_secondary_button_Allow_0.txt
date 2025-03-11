@@ -1,0 +1,1 @@
+{'tap': "Tapping this UI element will enable notifications for turn-by-turn directions, real-time traffic updates, and transit information, enhancing the user's navigation experience.", 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

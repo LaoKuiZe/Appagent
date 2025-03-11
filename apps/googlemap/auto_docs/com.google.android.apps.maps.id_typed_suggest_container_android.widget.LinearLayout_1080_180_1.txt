@@ -1,0 +1,1 @@
+{'tap': "The UI element provides access to specific details about the selected hospital, including its rating, services, and location on the map, which is essential for making informed decisions regarding the user's search for a hospital.", 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

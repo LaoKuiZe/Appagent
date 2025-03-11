@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element allows the user to cancel the current action and navigate back to the previous screen or task. It is essential for enabling seamless navigation within the app.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

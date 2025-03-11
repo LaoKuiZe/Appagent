@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this UI element allows the user to reveal additional product details or features that enhance the understanding of the basketball being viewed. This action is part of the process to assist in making an informed purchasing decision.', 'h_swipe': '', 'long_press': ''}

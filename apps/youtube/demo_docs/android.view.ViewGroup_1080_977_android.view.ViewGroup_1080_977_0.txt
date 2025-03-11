@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'The UI element allows users to filter and view various types of content related to their search query, enhancing the navigation experience by categorizing displayed results. Swiping it reveals additional content types that the user can explore.', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': 'Tapping this UI element will allow the user to type a query or search for items within the app. It serves as an input field for initiating searches related to products or information.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}
