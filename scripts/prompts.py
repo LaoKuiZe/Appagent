@@ -68,8 +68,8 @@ This function is used to swipe an UI element shown on the smartphone screen, usu
 represents one of the four directions: up, down, left, right. "direction" must be wrapped with double quotation 
 marks. "dist" determines the distance of the swipe and can be one of the three options: short, medium, long. You should 
 choose the appropriate distance option according to your need.
-A simple use case can be swipe(21, "up", "medium"), which swipes up the UI element labeled with the number 21 for a 
-medium distance.
+A simple use case can be swipe(21, "up", "long"), which swipes up the UI element labeled with the number 21 for a 
+long distance.
 
 5. grid()
 You should call this function when you find the element you want to interact with is not labeled with a numeric tag and 
@@ -80,7 +80,7 @@ press, or swipe.
 The task you need to complete is to <task_description>. Your past actions to proceed with this task are summarized as 
 follows: <last_act>
 Now, given the documentation and the following labeled screenshot, you need to think and call the function needed to 
-proceed with the task. Your output should include three parts in the given format:
+proceed with the task. Your output should strictly include and only include three parts in the given format:
 Observation: <Describe what you observe in the image>
 Thought: <To complete the given task, what is the next step I should do>
 Action: <The function call with the correct parameters to proceed with the task. If you believe the task is completed or 
@@ -125,7 +125,7 @@ A simple use case can be swipe(21, "center", 25, "right"), which performs a swip
 The task you need to complete is to <task_description>. Your past actions to proceed with this task are summarized as 
 follows: <last_act>
 Now, given the following labeled screenshot, you need to think and call the function needed to proceed with the task. 
-Your output should include three parts in the given format:
+Your output should strictly include and only include three parts in the given format:
 Observation: <Describe what you observe in the image>
 Thought: <To complete the given task, what is the next step I should do>
 Action: <The function call with the correct parameters to proceed with the task. If you believe the task is completed or 
@@ -185,7 +185,7 @@ the center of the element. The action of <action> this UI element was described 
 <last_act>
 The action was also an attempt to proceed with a larger task, which is to <task_desc>. Your job is to carefully analyze 
 the difference between the two screenshots to determine if the action is in accord with the description above and at 
-the same time effectively moved the task forward. Your output should be determined based on the following situations:
+the same time effectively moved the task forward. Your output should be determined based on the following situations without any markdown grammar:
 1. BACK
 If you think the action navigated you to a page where you cannot proceed with the given task, you should go back to the 
 previous interface. At the same time, describe the functionality of the UI element concisely in one or two sentences by 
@@ -220,4 +220,31 @@ can use pronouns such as "the UI element" to refer to the element. Your output s
 Decision: SUCCESS
 Thought: <explain why you think the action successfully moved the task forward>
 Documentation: <describe the function of the UI element>
+"""
+
+main_task_template = """You are an agent that is trained to complete a certain task on the smart phone. You will be given a instruction as main task. 
+First, provide a comprehensive and detailed textual answer to the main task based on your knowledge. Your answer should be as informative as possible.
+Next, determine whether using a smartphone app would enhance the answer. There are two available apps:   
+YouTube: Provides related videos relevant to the task.  
+Amazon: Provides related products that might be useful for the task.  
+
+You can choose:  
+YouTube (if related videos would help)   
+Amazon (if related products would help)  
+Both (if both sources add value)  
+None (if no additional information is needed)
+
+If you select any app(s), generate specific and executable sub-task instructions for each chosen app. Each instruction should be clear and actionable. The number of sub-tasks must match the number of selected apps.  
+
+For Example, the main task is : "How to make a chocolate cake?"   
+Your main answer: Provide detailed step-by-step instructions for making a chocolate cake.   
+App: YouTube, Amazon  
+Sub-tasks:  
+YouTube: Search for "How to make a chocolate cake" tutorial videos and select the most relevant one.  
+Amazon: Search for and list ingredients such as flour, cocoa powder, and baking supplies. 
+
+The main task you need to complete is to <task_description>. Your output should strictly include and only include three parts in the given format:
+Answer: <Detailed answer to the main task>
+App: <YouTube / Amazon / Both / None>
+Sub-tasks:[<Sub-task for YouTube, if selected>, <Sub-task for Amazon, if selected>]
 """

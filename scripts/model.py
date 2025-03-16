@@ -68,8 +68,40 @@ class OpenAIModel(BaseModel):
                              "yellow")
         else:
             return False, response["error"]["message"]
+        #----
+        print(f"The model used is {response['model']}")
+        #----
         return True, response["choices"][0]["message"]["content"]
 
+    def get_main_response(self, prompt: str)-> (bool, str):
+        # get response for main task
+        content = [
+            {
+                "type": "text",
+                "text": prompt
+            }
+        ]
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}"
+        }
+        payload = {
+            "model": self.model,
+            "messages": [
+                {
+                    "role": "user",
+                    "content":content
+                }
+            ],
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens
+        }
+        # 这里返回的格式可能不是json，后面遇到了再修改
+        response = requests.post(self.base_url, headers=headers, json=payload).json()
+        if "error" in response:
+            return False, response["error"]["message"]
+        else:
+            return True, response["choices"][0]["message"]["content"]
 
 class QwenModel(BaseModel):
     def __init__(self, api_key: str, model: str):
@@ -101,35 +133,10 @@ class QwenModel(BaseModel):
 
 def parse_explore_rsp(rsp):
     try:
-        try:
-            # 首先尝试 JSON 格式解析
-            if rsp.strip().startswith('{') and rsp.strip().endswith('}'):
-                try:
-                    json_data = json.loads(rsp)
-                    observation = json_data.get("Observation", "")
-                    think = json_data.get("Thought", "")
-                    act = json_data.get("Action", "")
-                    last_act = json_data.get("Summary", "")
-                    print_with_color("Detected JSON format response", "blue")
-                except json.JSONDecodeError:
-                    print_with_color("JSON parsing failed, falling back to regex", "yellow")
-                    observation = re.findall(r"Observation:(.*?)(?=Thought:|$)", rsp, re.DOTALL)[0].strip()
-                    think = re.findall(r"Thought:(.*?)(?=Action:|$)", rsp, re.DOTALL)[0].strip()
-                    act = re.findall(r"Action:(.*?)(?=Summary:|$)", rsp, re.DOTALL)[0].strip()
-                    last_act = re.findall(r"Summary:(.*?)$", rsp, re.DOTALL)[0].strip()
-            else:
-                # 使用正则表达式解析文本格式 (更健壮的版本)
-                observation = re.findall(r"Observation:(.*?)(?=Thought:|$)", rsp, re.DOTALL)[0].strip()
-                think = re.findall(r"Thought:(.*?)(?=Action:|$)", rsp, re.DOTALL)[0].strip()
-                act = re.findall(r"Action:(.*?)(?=Summary:|$)", rsp, re.DOTALL)[0].strip()
-                last_act = re.findall(r"Summary:(.*?)$", rsp, re.DOTALL)[0].strip()
-        except IndexError as ie:
-            # 所有解析方法都失败
-            print_with_color(f"All parsing methods failed: {str(ie)}", "red")
-            print_with_color("Raw response:", "yellow")
-            print_with_color(rsp, "red")
-            return ["ERROR"]
-
+        observation = re.findall(r"Observation: (.*?)$", rsp, re.MULTILINE)[0]
+        think = re.findall(r"Thought: (.*?)$", rsp, re.MULTILINE)[0]
+        act = re.findall(r"Action: (.*?)$", rsp, re.MULTILINE)[0]
+        last_act = re.findall(r"Summary: (.*?)$", rsp, re.MULTILINE)[0]
         print_with_color("Observation:", "yellow")
         print_with_color(observation, "magenta")
         print_with_color("Thought:", "yellow")
@@ -140,23 +147,20 @@ def parse_explore_rsp(rsp):
         print_with_color(last_act, "magenta")
         if "FINISH" in act:
             return ["FINISH"]
-            
-        # 改进的动作名称处理 - 移除所有特殊字符
-        raw_act_name = act.split("(")[0]
-        act_name = raw_act_name.replace("`", "").replace("!", "").replace("*", "").strip()
-        print_with_color(f"Cleaned action name: '{act_name}'", "blue")
-        
+        act_name = act.split("(")[0]
+        # process the act string to remove unwanted characters and spaces
+        act_name = act_name.replace("`", "").replace("*", "").replace(" ", "")
         if act_name == "tap":
-            area = int(re.findall(r"tap\s*[`!]?\((.*?)\)", act)[0])
+            area = int(re.findall(r"tap\((.*?)\)", act)[0])
             return [act_name, area, last_act]
         elif act_name == "text":
-            input_str = re.findall(r"text\s*[`!]?\((.*?)\)", act)[0][1:-1]
+            input_str = re.findall(r"text\((.*?)\)", act)[0][1:-1]
             return [act_name, input_str, last_act]
         elif act_name == "long_press":
-            area = int(re.findall(r"long_press\s*[`!]?\((.*?)\)", act)[0])
+            area = int(re.findall(r"long_press\((.*?)\)", act)[0])
             return [act_name, area, last_act]
         elif act_name == "swipe":
-            params = re.findall(r"swipe\s*[`!]?\((.*?)\)", act)[0]
+            params = re.findall(r"swipe\((.*?)\)", act)[0]
             area, swipe_dir, dist = params.split(",")
             area = int(area)
             swipe_dir = swipe_dir.strip()[1:-1]
@@ -165,7 +169,7 @@ def parse_explore_rsp(rsp):
         elif act_name == "grid":
             return [act_name]
         else:
-            print_with_color(f"ERROR: Undefined act '{act_name}'!", "red")
+            print_with_color(f"ERROR: Undefined act {act_name}!", "red")
             return ["ERROR"]
     except Exception as e:
         print_with_color(f"ERROR: an exception occurs while parsing the model response: {e}", "red")
@@ -173,7 +177,7 @@ def parse_explore_rsp(rsp):
         return ["ERROR"]
 
 
-def parse_grid_rsp(rsp):
+def arsep_grid_rsp(rsp):
     try:
         observation = re.findall(r"Observation: (.*?)$", rsp, re.MULTILINE)[0]
         think = re.findall(r"Thought: (.*?)$", rsp, re.MULTILINE)[0]
@@ -190,6 +194,8 @@ def parse_grid_rsp(rsp):
         if "FINISH" in act:
             return ["FINISH"]
         act_name = act.split("(")[0]
+        # process the act string to remove unwanted characters and spaces
+        act_name = act_name.replace("`", "").replace("*", "").replace(" ", "")
         if act_name == "tap":
             params = re.findall(r"tap\((.*?)\)", act)[0].split(",")
             area = int(params[0].strip())
@@ -217,7 +223,7 @@ def parse_grid_rsp(rsp):
         print_with_color(rsp, "red")
         return ["ERROR"]
 
-
+# 这里传入的参数是string
 def parse_reflect_rsp(rsp):
     try:
         decision = re.findall(r"Decision: (.*?)$", rsp, re.MULTILINE)[0]
