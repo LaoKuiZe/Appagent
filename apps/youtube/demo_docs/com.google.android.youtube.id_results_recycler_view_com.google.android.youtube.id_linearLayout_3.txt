@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element initializes a search for general information related to keeping a cat.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

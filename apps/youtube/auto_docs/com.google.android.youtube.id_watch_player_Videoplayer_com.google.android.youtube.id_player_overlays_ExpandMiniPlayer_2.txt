@@ -1,0 +1,1 @@
+{'tap': 'The UI element navigates to the video page, enabling users to access video-related content and interactions such as viewing and posting comments.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

@@ -1,0 +1,1 @@
+{'tap': '', 'text': '', 'v_swipe': 'Swiping this area reveals additional content or steps related to completing a larger task.', 'h_swipe': '', 'long_press': ''}

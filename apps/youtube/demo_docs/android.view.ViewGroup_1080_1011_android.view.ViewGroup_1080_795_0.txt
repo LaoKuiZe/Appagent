@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element will play the selected video in full-screen mode.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

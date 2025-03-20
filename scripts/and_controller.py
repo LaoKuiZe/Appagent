@@ -1,6 +1,7 @@
 import os
 import subprocess
 import xml.etree.ElementTree as ET
+import logging
 
 from config import load_config
 from utils import print_with_color

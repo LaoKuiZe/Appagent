@@ -10,7 +10,7 @@ import time
 import prompts
 from config import load_config
 from and_controller import list_all_devices, AndroidController, traverse_tree
-from model import parse_explore_rsp, parse_grid_rsp, OpenAIModel, QwenModel
+from model import parse_explore_rsp, parse_grid_rsp, OpenAIModel, QwenModel, parse_main_rsp
 from utils import print_with_color, draw_bbox_multi, draw_grid
 
 arg_desc = "AppAgent Executor"
@@ -34,6 +34,74 @@ else:
     print_with_color(f"ERROR: Unsupported model type {configs['MODEL']}!", "red")
     sys.exit()
 
+# 开始进行任务交互
+print_with_color("Please enter the description of the task you want me to complete in a few sentences:", "blue")
+main_desc = input()
+main_prompt = re.sub(r"<task_description>", main_desc, prompts.main_task_template)
+
+# task_desc = input()
+
+# 先获取主任务的文本回答(目前可以按照prompt要求生成回答)
+main_status, main_task_response = mllm.get_main_response(main_prompt)
+main_task_response = main_task_response.replace("*","")
+if not main_status:
+    print_with_color(f"ERROR: Main task response failed: {main_task_response}", "red")
+    sys.exit()
+else:
+    try:
+        # 使用正则表达式提取三个部分
+        answer = re.search(r'Answer:(.*?)(?=App:|$)', main_task_response, re.DOTALL).group(1).strip()
+        app_match = re.search(r'App:(.*?)(?=Sub-tasks:|$)', main_task_response, re.DOTALL)
+        app = app_match.group(1).strip() if app_match else "None"
+        
+        subtasks_match = re.search(r'Sub-tasks:(.*?)$', main_task_response, re.DOTALL)
+        subtasks = subtasks_match.group(1).strip() if subtasks_match else ""
+        
+        print_with_color(f"Answer: {answer}", "green")
+        print_with_color(f"Selected app(s): {app}", "green")
+        if subtasks:
+            print_with_color(f"Sub-tasks: {subtasks}", "green")
+
+        # 分别提取每个应用的子任务
+        app_tasks = {}
+        if subtasks:
+            # 先检查是否是只有一个应用的情况
+            if app.lower() != "both" and app.lower() != "none" and ":" not in subtasks:
+                # 这是只有一个应用的情况，整个subtasks都是给这个应用的
+                app_tasks[app] = subtasks
+            else:
+                # 使用更鲁棒的正则表达式匹配应用名称和对应的任务
+                app_task_matches = re.findall(r'[-\s]*([^:]+):\s*(.*?)(?=\n\s*[-]*\s*[^:]+:|$)', subtasks, re.DOTALL)
+                for app_name, task in app_task_matches:
+                    app_tasks[app_name.strip()] = task.strip()
+        
+        print_with_color(f"Answer: {answer}", "green")
+        print_with_color(f"Selected app(s): {app}", "blue")
+            
+        # 打印每个应用的子任务
+        for app_name, task in app_tasks.items():
+            print_with_color(f"{app_name} task: {task}", "cyan")
+
+        # 根据选择的应用继续执行，而不是退出
+        task_desc = main_desc  # 使用原始任务描述
+    except Exception as e:
+        print_with_color(f"ERROR: Failed to parse main task response: {str(e)}", "red")
+        sys.exit()
+
+#sys.exit()
+
+# 完成后，获取子任务的文本回答，配置相关的参数
+while(True):
+    if len(app_tasks) == 0:
+        sys.exit()
+    elif len(subtasks) == 1:
+        app = app_tasks.keys()[0].lower()
+        task_desc = app_tasks[app]
+        print("The app is" + app)
+        print(f"Task description: {task_desc}")
+        
+
+        """-------------"""
 app = args["app"]
 root_dir = args["root_dir"]
 
@@ -104,9 +172,7 @@ if not width and not height:
     sys.exit()
 print_with_color(f"Screen resolution of {device}: {width}x{height}", "yellow")
 
-print_with_color("Please enter the description of the task you want me to complete in a few sentences:", "blue")
-task_desc = input()
-
+# 初始化记录参数
 round_count = 0
 last_act = "None"
 task_complete = False
@@ -138,7 +204,7 @@ def area_to_xy(area, subarea):
         x, y = x_0 + (width // cols) // 2, y_0 + (height // rows) // 2
     return x, y
 
-
+# 开始运行agent
 while round_count < configs["MAX_ROUNDS"]:
     round_count += 1
     print_with_color(f"Round {round_count}", "yellow")
@@ -172,6 +238,8 @@ while round_count < configs["MAX_ROUNDS"]:
         draw_bbox_multi(screenshot_path, os.path.join(task_dir, f"{dir_name}_{round_count}_labeled.png"), elem_list,
                         dark_mode=configs["DARK_MODE"])
         image = os.path.join(task_dir, f"{dir_name}_{round_count}_labeled.png")
+
+        # 构造任务prompt
         if no_doc:
             prompt = re.sub(r"<ui_document>", "", prompts.task_template)
         else:
@@ -181,19 +249,7 @@ while round_count < configs["MAX_ROUNDS"]:
                 if not os.path.exists(doc_path):
                     continue
                 ui_doc += f"Documentation of UI element labeled with the numeric tag '{i + 1}':\n"
-
-                try:
-                    # 首先尝试 json 解析 - 对多行字符串更友好
-                    doc_content = json.loads(open(doc_path, "r").read().replace("'", "\""))
-                except json.JSONDecodeError:
-                    try:
-                        # 回退到 literal_eval
-                        doc_content = ast.literal_eval(open(doc_path, "r").read())
-                    except (SyntaxError, ValueError) as e:
-                        # 如果解析失败，创建默认文档内容
-                        print_with_color(f"Error parsing doc file {doc_path}: {str(e)}", "red")
-                        doc_content = {"tap": "", "text": "", "v_swipe": "", "h_swipe": "", "long_press": ""}
-
+                doc_content = ast.literal_eval(open(doc_path, "r").read())
                 if doc_content["tap"]:
                     ui_doc += f"This UI element is clickable. {doc_content['tap']}\n\n"
                 if doc_content["text"]:

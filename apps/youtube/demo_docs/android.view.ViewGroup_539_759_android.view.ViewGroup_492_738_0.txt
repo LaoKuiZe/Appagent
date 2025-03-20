@@ -1,0 +1,1 @@
+{'tap': 'Tapping the UI element plays a video tutorial related to making a basic vanilla cake recipe.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

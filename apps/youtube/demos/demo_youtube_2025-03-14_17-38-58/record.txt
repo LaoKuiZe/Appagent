@@ -1,0 +1,6 @@
+tap(4):::android.view.ViewGroup_144_144_com.google.android.youtube.id_menu_item_view_Search_0
+text(2:sep:"how to keep a cat"):::com.google.android.youtube.id_search_box_com.google.android.youtube.id_search_edit_text_0
+tap(10):::com.google.android.youtube.id_results_recycler_view_com.google.android.youtube.id_linearLayout_3
+swipe(10:sep:up):::android.view.ViewGroup_120_120_android.widget.Button_72_72_Moreactions_0
+tap(9):::android.view.ViewGroup_1080_1011_android.view.ViewGroup_1080_795_0
+stop

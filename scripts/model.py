@@ -96,11 +96,14 @@ class OpenAIModel(BaseModel):
             "temperature": self.temperature,
             "max_tokens": self.max_tokens
         }
-        # 这里返回的格式可能不是json，后面遇到了再修改
+        # 这里返回的格式可能不是json，后面遇到了问题再修改
         response = requests.post(self.base_url, headers=headers, json=payload).json()
         if "error" in response:
             return False, response["error"]["message"]
         else:
+            # 打印消耗的tokens的数量
+            usage = response["usage"]["prompt_tokens"] + response["usage"]["completion_tokens"]
+            print(f"Tokens consumed:{usage}")
             return True, response["choices"][0]["message"]["content"]
 
 class QwenModel(BaseModel):
@@ -176,8 +179,29 @@ def parse_explore_rsp(rsp):
         print_with_color(rsp, "red")
         return ["ERROR"]
 
+# 解析主任务的回答
+def parse_main_rsp(rsp):
+    try:
+        result =[]
+        answer = re.findall(r"Answer: (.*?)$", rsp, re.MULTILINE)[0]
+        app = re.findall(r"App: (.*?)$", rsp, re.MULTILINE)[0]
+        subtasks = re.findall(r"Subtasks: (.*?)$", re.MULTILINE)[0]
+        print_with_color(f"Answer: {answer}", "yellow")
+        print_with_color(f"App: {app}", "yellow")
+        print_with_color(f"Subtasks: {subtasks}", "yellow")
+        print_with_color(f"The type of subtasks is {type(subtasks)}", "yellow")
+        if app == "None":
+            subtasks = []
+            return [answer]
+        else:
+            return [answer, app, subtasks]
+    except Exception as e:
+        print_with_color(f"ERROR: an exception occurs while parsing the model response: {e}", "red")
+        print_with_color(rsp, "red")
+        return ["ERROR"]
 
-def arsep_grid_rsp(rsp):
+
+def parse_grid_rsp(rsp):
     try:
         observation = re.findall(r"Observation: (.*?)$", rsp, re.MULTILINE)[0]
         think = re.findall(r"Thought: (.*?)$", rsp, re.MULTILINE)[0]

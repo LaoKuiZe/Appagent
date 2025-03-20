@@ -1,0 +1,1 @@
+{'tap': 'The UI element is an advertisement link that directs the user to promoted content when interacted with.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}

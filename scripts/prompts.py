@@ -234,6 +234,8 @@ Amazon (if related products would help)
 Both (if both sources add value)  
 None (if no additional information is needed)
 
+If the user does not ask a question that requires no explanation, such as "1+1 equals to what", you can choose not to use additional software. Otherwise, you need to use app(s) to provide users with proactive answers as much as possible.
+
 If you select any app(s), generate specific and executable sub-task instructions for each chosen app. Each instruction should be clear and actionable. The number of sub-tasks must match the number of selected apps.  
 
 For Example, the main task is : "How to make a chocolate cake?"   
@@ -243,8 +245,8 @@ Sub-tasks:
 YouTube: Search for "How to make a chocolate cake" tutorial videos and select the most relevant one.  
 Amazon: Search for and list ingredients such as flour, cocoa powder, and baking supplies. 
 
-The main task you need to complete is to <task_description>. Your output should strictly include and only include three parts in the given format:
+The main task you need to complete is to <task_description>. IMPORTANT: Your response must include ALL THREE PARTS with EXACT LABELS:
 Answer: <Detailed answer to the main task>
-App: <YouTube / Amazon / Both / None>
+App: <YouTube/Amazon/Both/None>
 Sub-tasks:[<Sub-task for YouTube, if selected>, <Sub-task for Amazon, if selected>]
 """

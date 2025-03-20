@@ -1,0 +1,1 @@
+{'tap': 'The UI element navigates to a search results page, showing related content or suggestions based on the selected text.', 'text': '', 'v_swipe': '', 'h_swipe': '', 'long_press': ''}
