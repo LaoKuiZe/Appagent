@@ -95,17 +95,18 @@ else:
 while(True):
     if len(app_tasks) == 0:
         sys.exit()
-    elif len(subtasks) == 1:
-        app = app_tasks.keys()[0].lower()
+    elif len(app_tasks) == 1:  # 使用app_tasks而不是subtasks检查数量
+        app = list(app_tasks.keys())[0].lower()  # 将keys()转换为列表
         task_desc = app_tasks[app]
-        print("The app is" + app)
-        print(f"Task description: {task_desc}")
+        print_with_color(f"The app is {app}", "yellow")
+        print_with_color(f"Task description: {task_desc}", "yellow")
         link = subtask(app, task_desc)
         print_with_color(f"The probable useful link is {link}", "blue")
         sys.exit()
-    elif len(subtasks) == 2:
-        app1 = app_tasks.keys()[0].lower()
-        app2 = app_tasks.keys()[1].lower()
+    elif len(app_tasks) == 2:
+        app_names = list(app_tasks.keys())
+        app1 = app_names[0].lower()
+        app2 = app_names[1].lower()
         task_desc1 = app_tasks[app1]
         task_desc2 = app_tasks[app2]
         print(f"Task description for {app1}: {task_desc1}")
