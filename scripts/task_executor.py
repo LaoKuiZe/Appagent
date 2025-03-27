@@ -100,8 +100,8 @@ while(True):
         task_desc = app_tasks[app]
         print_with_color(f"The app is {app}", "yellow")
         print_with_color(f"Task description: {task_desc}", "yellow")
-        link = subtask(app, task_desc)
-        print_with_color(f"The probable useful link is {link}", "blue")
+        # 需要修改
+        # link = subtask(app, task_desc)
         sys.exit()
     elif len(app_tasks) == 2:
         app_names = list(app_tasks.keys())
@@ -111,10 +111,9 @@ while(True):
         task_desc2 = app_tasks[app2]
         print(f"Task description for {app1}: {task_desc1}")
         print(f"Task description for {app2}: {task_desc2}")
-        link1 = subtask(app1, task_desc1)
-        link2 = subtask(app2, task_desc2)
-        print_with_color(f"The probable useful link for {app1} is {link1}", "blue")
-        print_with_color(f"The probable useful link for {app2} is {link2}", "blue")
+        # 这里要修改为返回截图路径
+        # link1 = subtask(app1, task_desc1)
+        # link2 = subtask(app2, task_desc2)
         sys.exit()
 
 
