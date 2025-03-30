@@ -241,8 +241,37 @@ def subtask(app: str, task_desc: str):
 
     if task_complete:
         print_with_color(f"{app} Task completed successfully", "yellow")
-        return ("This should be a link TOBEDONE")
+        # 获取最后一个成功的截图路径
+        last_screenshot = os.path.join(task_dir, f"{dir_name}_{round_count}.png")
+        last_screenshot_labeled = os.path.join(task_dir, f"{dir_name}_{round_count}_labeled.png")
+        
+        # 返回有标签的截图（如果存在），否则返回原始截图
+        return_path = last_screenshot_labeled if os.path.exists(last_screenshot_labeled) else last_screenshot
+        
+        print_with_color(f"Final screenshot saved at: {return_path}", "green")
+        return return_path
     elif round_count == configs["MAX_ROUNDS"]:
         print_with_color(f"{app} Task finished due to reaching max rounds", "yellow")
+        # 返回最后一个截图路径，即使任务未完全完成
+        last_screenshot = os.path.join(task_dir, f"{dir_name}_{round_count}.png")
+        last_screenshot_labeled = os.path.join(task_dir, f"{dir_name}_{round_count}_labeled.png")
+        
+        return_path = last_screenshot_labeled if os.path.exists(last_screenshot_labeled) else last_screenshot
+        
+        print_with_color(f"Final screenshot saved at: {return_path}", "green")
+        return return_path
     else:
         print_with_color(f"{app} Task finished unexpectedly", "red")
+        # 返回最后一个成功的截图路径，如果存在
+        if round_count > 0:
+            last_screenshot = os.path.join(task_dir, f"{dir_name}_{round_count}.png")
+            last_screenshot_labeled = os.path.join(task_dir, f"{dir_name}_{round_count}_labeled.png")
+            
+            return_path = last_screenshot_labeled if os.path.exists(last_screenshot_labeled) else last_screenshot
+            
+            if os.path.exists(return_path):
+                print_with_color(f"Last available screenshot saved at: {return_path}", "green")
+                return return_path
+            
+        # 如果没有找到任何截图，返回任务目录
+        return("No screenshots available, task directory: " + task_dir)

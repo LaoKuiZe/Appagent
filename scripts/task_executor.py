@@ -96,24 +96,33 @@ while(True):
     if len(app_tasks) == 0:
         sys.exit()
     elif len(app_tasks) == 1:  # 使用app_tasks而不是subtasks检查数量
-        app = list(app_tasks.keys())[0].lower()  # 将keys()转换为列表
+        app = list(app_tasks.keys())[0]  # 将keys()转换为列表
         task_desc = app_tasks[app]
         print_with_color(f"The app is {app}", "yellow")
         print_with_color(f"Task description: {task_desc}", "yellow")
-        # 需要修改
-        # link = subtask(app, task_desc)
+        app = app.lower()
+        result_path = subtask(app, task_desc)
+        print_with_color(f"\n\nAll task completed successfully!", "blue")
+        print_with_color(f"{main_task_response}", "blue")
+        print_with_color(f"The {app} screenshot path is {result_path}", "yellow")
         sys.exit()
     elif len(app_tasks) == 2:
         app_names = list(app_tasks.keys())
-        app1 = app_names[0].lower()
-        app2 = app_names[1].lower()
+        app1 = app_names[0]
+        app2 = app_names[1]
         task_desc1 = app_tasks[app1]
         task_desc2 = app_tasks[app2]
         print(f"Task description for {app1}: {task_desc1}")
         print(f"Task description for {app2}: {task_desc2}")
         # 这里要修改为返回截图路径
-        # link1 = subtask(app1, task_desc1)
-        # link2 = subtask(app2, task_desc2)
+        app1 = app1.lower()
+        app2 = app2.lower()
+        result_path1 = subtask(app1, task_desc)
+        result_path2 = subtask(app2, task_desc)
+        print_with_color(f"\n\nAll task completed successfully!", "blue")
+        print_with_color(f"{main_task_response}", "blue")
+        print_with_color(f"The {app1} screenshot path is {result_path1}", "blue")
+        print_with_color(f"The {app2} screenshot path is {result_path2}", "blue")
         sys.exit()
 
 

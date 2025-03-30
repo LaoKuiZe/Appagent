@@ -103,11 +103,15 @@ class AndroidController:
         return 0, 0
 
     def get_screenshot(self, prefix, save_dir):
+        # 处理文件名中的特殊字符，将空格和点号替换为下划线
+        safe_prefix = prefix.replace(" ", "_").replace(".", "_")
+        
         cap_command = f"adb -s {self.device} shell screencap -p " \
-                      f"{os.path.join(self.screenshot_dir, prefix + '.png').replace(self.backslash, '/')}"
+                    f"\"{os.path.join(self.screenshot_dir, safe_prefix + '.png').replace(self.backslash, '/')}\""
         pull_command = f"adb -s {self.device} pull " \
-                       f"{os.path.join(self.screenshot_dir, prefix + '.png').replace(self.backslash, '/')} " \
-                       f"{os.path.join(save_dir, prefix + '.png')}"
+                    f"\"{os.path.join(self.screenshot_dir, safe_prefix + '.png').replace(self.backslash, '/')}\" " \
+                    f"\"{os.path.join(save_dir, prefix + '.png')}\""
+        
         result = execute_adb(cap_command)
         if result != "ERROR":
             result = execute_adb(pull_command)
@@ -117,11 +121,15 @@ class AndroidController:
         return result
 
     def get_xml(self, prefix, save_dir):
+        # 处理文件名中的特殊字符，将空格和点号替换为下划线
+        safe_prefix = prefix.replace(" ", "_").replace(".", "_")
+        
         dump_command = f"adb -s {self.device} shell uiautomator dump " \
-                       f"{os.path.join(self.xml_dir, prefix + '.xml').replace(self.backslash, '/')}"
+                    f"\"{os.path.join(self.xml_dir, safe_prefix + '.xml').replace(self.backslash, '/')}\""
         pull_command = f"adb -s {self.device} pull " \
-                       f"{os.path.join(self.xml_dir, prefix + '.xml').replace(self.backslash, '/')} " \
-                       f"{os.path.join(save_dir, prefix + '.xml')}"
+                    f"\"{os.path.join(self.xml_dir, safe_prefix + '.xml').replace(self.backslash, '/')}\" " \
+                    f"\"{os.path.join(save_dir, prefix + '.xml')}\""
+        
         result = execute_adb(dump_command)
         if result != "ERROR":
             result = execute_adb(pull_command)
