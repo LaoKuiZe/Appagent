@@ -95,6 +95,12 @@ class AndroidController:
         self.width, self.height = self.get_device_size()
         self.backslash = "\\"
 
+    def home(self):
+        """按下HOME键返回主屏幕"""
+        adb_command = f"adb -s {self.device} shell input keyevent KEYCODE_HOME"
+        ret = execute_adb(adb_command)
+        return ret
+
     def get_device_size(self):
         adb_command = f"adb -s {self.device} shell wm size"
         result = execute_adb(adb_command)

@@ -97,7 +97,7 @@ while(True):
         sys.exit()
     elif len(app_tasks) == 1:  # 使用app_tasks而不是subtasks检查数量
         app = list(app_tasks.keys())[0]  # 将keys()转换为列表
-        task_desc = app_tasks[app]
+        task_desc = f"First, tap the icon of {app}." + app_tasks[app]
         print_with_color(f"The app is {app}", "yellow")
         print_with_color(f"Task description: {task_desc}", "yellow")
         app = app.lower()
@@ -110,15 +110,27 @@ while(True):
         app_names = list(app_tasks.keys())
         app1 = app_names[0]
         app2 = app_names[1]
-        task_desc1 = app_tasks[app1]
-        task_desc2 = app_tasks[app2]
+        task_desc1 = f"First, tap the icon of {app1}." +app_tasks[app1]
+        task_desc2 = f"First, tap the icon of {app2}." +app_tasks[app2]
         print(f"Task description for {app1}: {task_desc1}")
         print(f"Task description for {app2}: {task_desc2}")
         # 这里要修改为返回截图路径
         app1 = app1.lower()
         app2 = app2.lower()
         result_path1 = subtask(app1, task_desc)
+
+        # 创建一个新的控制器实例
+        device_list = list_all_devices()
+        if device_list:
+            device = device_list[0]
+            controller = AndroidController(device)
+            # 返回主屏幕准备执行下一个任务
+            print_with_color(f"返回主屏幕并准备执行下一个任务...", "yellow")
+            controller.home()
+            time.sleep(2)  # 给系统一些时间完全回到主页
+
         result_path2 = subtask(app2, task_desc)
+
         print_with_color(f"\n\nAll task completed successfully!", "blue")
         print_with_color(f"{main_task_response}", "blue")
         print_with_color(f"The {app1} screenshot path is {result_path1}", "blue")

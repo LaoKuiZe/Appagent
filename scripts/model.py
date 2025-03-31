@@ -254,7 +254,7 @@ def parse_reflect_rsp(rsp):
         think = re.findall(r"Thought: (.*?)$", rsp, re.MULTILINE)[0]
 
         # 清理决策字符串，去除前后空格
-        cleaned_decision = decision.strip()
+        cleaned_decision = decision.strip().replace("**","")
 
         print_with_color("Decision:", "yellow")
         print_with_color(cleaned_decision, "magenta")
